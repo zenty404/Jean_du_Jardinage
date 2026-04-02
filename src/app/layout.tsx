@@ -3,6 +3,7 @@ import { Noto_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollAnimator from "@/components/ScrollAnimator";
 
 const notoSerif = Noto_Serif({
   variable: "--font-noto-serif",
@@ -38,6 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface font-body text-on-surface antialiased">
+        <ScrollAnimator />
         <Navbar />
         <main>{children}</main>
         <Footer />

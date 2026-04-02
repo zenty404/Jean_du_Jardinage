@@ -1,5 +1,4 @@
 import Link from "next/link";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function HomePage() {
   return (
@@ -13,7 +12,7 @@ export default function HomePage() {
             className="w-full h-full object-cover"
             src="/hero.png"
           />
-          <div className="absolute inset-0 bg-primary/30 backdrop-brightness-[0.65]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/40 to-transparent backdrop-brightness-[0.6]"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-8 w-full">
           <div className="max-w-3xl bg-primary/30 backdrop-blur-xl border border-white/10 rounded-3xl p-10 md:p-14 shadow-2xl">
@@ -56,17 +55,17 @@ export default function HomePage() {
       {/* Services Section */}
       <section className="py-32 bg-surface">
         <div className="max-w-screen-2xl mx-auto px-8">
-          <AnimateOnScroll variant="fade-up" className="mb-20">
+          <div data-animate="fade-up" className="mb-20">
             <span className="text-secondary font-bold tracking-widest uppercase text-xs">
               Expertises
             </span>
             <h2 className="font-headline text-4xl md:text-5xl text-primary mt-4">
               Nos Services
             </h2>
-          </AnimateOnScroll>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Service Card 1 */}
-            <AnimateOnScroll variant="fade-up" delay={0}>
+            <div data-animate="fade-up">
               <div className="group p-10 bg-surface-container-low rounded-xl transition-all duration-500 hover:bg-surface-container-highest h-full">
                 <div className="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl">
@@ -91,9 +90,9 @@ export default function HomePage() {
                   </span>
                 </Link>
               </div>
-            </AnimateOnScroll>
+            </div>
             {/* Service Card 2 */}
-            <AnimateOnScroll variant="fade-up" delay={150}>
+            <div data-animate="fade-up" style={{ "--animate-delay": "150ms" } as React.CSSProperties}>
               <div className="group p-10 bg-surface-container-low rounded-xl transition-all duration-500 hover:bg-surface-container-highest h-full">
                 <div className="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl">
@@ -118,9 +117,9 @@ export default function HomePage() {
                   </span>
                 </Link>
               </div>
-            </AnimateOnScroll>
+            </div>
             {/* Service Card 3 */}
-            <AnimateOnScroll variant="fade-up" delay={300}>
+            <div data-animate="fade-up" style={{ "--animate-delay": "300ms" } as React.CSSProperties}>
               <div className="group p-10 bg-surface-container-low rounded-xl transition-all duration-500 hover:bg-surface-container-highest h-full">
                 <div className="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl">
@@ -145,7 +144,7 @@ export default function HomePage() {
                   </span>
                 </Link>
               </div>
-            </AnimateOnScroll>
+            </div>
           </div>
         </div>
       </section>
@@ -153,7 +152,7 @@ export default function HomePage() {
       {/* Recent Projects */}
       <section className="py-32 bg-surface-container">
         <div className="max-w-screen-2xl mx-auto px-8">
-          <AnimateOnScroll variant="fade-up">
+          <div data-animate="fade-up">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="max-w-2xl">
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs">
@@ -174,9 +173,9 @@ export default function HomePage() {
                 Voir tout le portfolio
               </Link>
             </div>
-          </AnimateOnScroll>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
-            <AnimateOnScroll variant="scale-in" delay={0} className="md:col-span-8">
+            <div data-animate="scale-in" className="md:col-span-8">
               <div className="relative group overflow-hidden rounded-xl h-[500px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -193,8 +192,8 @@ export default function HomePage() {
                   </h4>
                 </div>
               </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll variant="scale-in" delay={150} className="md:col-span-4">
+            </div>
+            <div data-animate="scale-in" style={{ "--animate-delay": "150ms" } as React.CSSProperties} className="md:col-span-4">
               <div className="relative group overflow-hidden rounded-xl h-[500px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -211,8 +210,8 @@ export default function HomePage() {
                   </h4>
                 </div>
               </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll variant="scale-in" delay={100} className="md:col-span-4">
+            </div>
+            <div data-animate="scale-in" style={{ "--animate-delay": "100ms" } as React.CSSProperties} className="md:col-span-4">
               <div className="relative group overflow-hidden rounded-xl h-[400px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -229,8 +228,8 @@ export default function HomePage() {
                   </h4>
                 </div>
               </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll variant="scale-in" delay={250} className="md:col-span-8">
+            </div>
+            <div data-animate="scale-in" style={{ "--animate-delay": "250ms" } as React.CSSProperties} className="md:col-span-8">
               <div className="relative group overflow-hidden rounded-xl h-[400px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -247,7 +246,7 @@ export default function HomePage() {
                   </h4>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           </div>
         </div>
       </section>
@@ -256,7 +255,7 @@ export default function HomePage() {
       <section className="py-32 bg-surface overflow-hidden">
         <div className="max-w-screen-2xl mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <AnimateOnScroll variant="fade-right">
+            <div data-animate="fade-right">
               <div className="relative">
                 <div className="absolute -top-12 -left-12 w-64 h-64 bg-secondary-container rounded-full opacity-20 blur-3xl z-0 animate-glow"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -272,8 +271,8 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll variant="fade-left">
+            </div>
+            <div data-animate="fade-left" style={{ "--animate-delay": "200ms" } as React.CSSProperties}>
               <div className="space-y-8">
                 <span className="text-secondary font-bold tracking-widest uppercase text-xs">
                   Philosophie
@@ -336,7 +335,7 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
           </div>
         </div>
       </section>

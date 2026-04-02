@@ -1,9 +1,8 @@
 import Link from "next/link";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function Footer() {
   return (
-    <AnimateOnScroll variant="fade-up" as="footer" className="w-full rounded-t-[2rem] mt-20 bg-emerald-900">
+    <footer data-animate="fade-up" className="w-full rounded-t-[2rem] mt-20 bg-emerald-900">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 max-w-screen-2xl mx-auto">
         {/* Brand */}
         <div className="col-span-1">
@@ -138,6 +137,6 @@ export default function Footer() {
           </a>
         </div>
       </div>
-    </AnimateOnScroll>
+    </footer>
   );
 }

@@ -138,7 +138,7 @@ body {
    ============================================ */
 
 /* Base state: hidden before animation triggers */
-.animate-on-scroll {
+[data-animate] {
   opacity: 0;
   will-change: transform, opacity;
   transition-property: transform, opacity, filter;
@@ -148,31 +148,31 @@ body {
 }
 
 /* Variant initial states */
-.animate-fade-up {
+[data-animate="fade-up"] {
   transform: translateY(40px);
 }
-.animate-fade-down {
+[data-animate="fade-down"] {
   transform: translateY(-40px);
 }
-.animate-fade-left {
+[data-animate="fade-left"] {
   transform: translateX(40px);
 }
-.animate-fade-right {
+[data-animate="fade-right"] {
   transform: translateX(-40px);
 }
-.animate-fade-in {
+[data-animate="fade-in"] {
   transform: none;
 }
-.animate-scale-in {
+[data-animate="scale-in"] {
   transform: scale(0.92);
 }
-.animate-blur-in {
+[data-animate="blur-in"] {
   transform: translateY(20px);
   filter: blur(8px);
 }
 
 /* Visible state: triggered by IntersectionObserver */
-.animate-on-scroll.animate-visible {
+[data-animate].animate-visible {
   opacity: 1;
   transform: translateY(0) translateX(0) scale(1);
   filter: blur(0);
@@ -287,7 +287,7 @@ body {
 
 /* Reduced Motion: disable all animations */
 @media (prefers-reduced-motion: reduce) {
-  .animate-on-scroll,
+  [data-animate],
   .animate-hero,
   .animate-navbar,
   .animate-mobile-menu,
