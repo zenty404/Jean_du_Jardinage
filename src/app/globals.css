@@ -1,26 +1,306 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Primary colors */
+  --color-primary: #061b0e;
+  --color-primary-container: #1b3022;
+  --color-primary-fixed: #d0e9d4;
+  --color-primary-fixed-dim: #b4cdb8;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #819986;
+  --color-on-primary-fixed: #0b2013;
+  --color-on-primary-fixed-variant: #364c3c;
+  --color-inverse-primary: #b4cdb8;
+
+  /* Secondary colors */
+  --color-secondary: #6e5b45;
+  --color-secondary-container: #f9dec2;
+  --color-secondary-fixed: #f9dec2;
+  --color-secondary-fixed-dim: #dcc2a8;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #75614b;
+  --color-on-secondary-fixed: #261908;
+  --color-on-secondary-fixed-variant: #55442f;
+
+  /* Tertiary colors */
+  --color-tertiary: #191710;
+  --color-tertiary-container: #2e2b23;
+  --color-tertiary-fixed: #e9e2d6;
+  --color-tertiary-fixed-dim: #ccc6ba;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #979287;
+  --color-on-tertiary-fixed: #1e1b14;
+  --color-on-tertiary-fixed-variant: #4a463e;
+
+  /* Surface colors */
+  --color-surface: #f6fbf4;
+  --color-surface-bright: #f6fbf4;
+  --color-surface-dim: #d7dbd5;
+  --color-surface-tint: #4d6453;
+  --color-surface-variant: #dfe4dd;
+  --color-surface-container: #ebefe9;
+  --color-surface-container-low: #f0f5ee;
+  --color-surface-container-high: #e5e9e3;
+  --color-surface-container-highest: #dfe4dd;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #181d19;
+  --color-on-surface-variant: #434843;
+  --color-inverse-surface: #2d322d;
+  --color-inverse-on-surface: #eef2eb;
+  --color-on-background: #181d19;
+
+  /* Error colors */
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* Outline colors */
+  --color-outline: #737973;
+  --color-outline-variant: #c3c8c1;
+
+  /* Background */
+  --color-background: #f6fbf4;
+
+  /* Fonts */
+  --font-headline: "Noto Serif", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Manrope", sans-serif;
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Manrope", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Material Icons */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #061b0e 0%, #1b3022 100%);
+}
+
+/* Masonry grid for portfolio */
+.masonry-grid {
+  column-count: 1;
+  column-gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .masonry-grid {
+    column-count: 2;
   }
 }
 
+@media (min-width: 1280px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 2rem;
+}
+
+/* Selection styling */
+::selection {
+  background-color: #b4cdb8;
+  color: #0b2013;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f6fbf4;
+  color: #181d19;
+}
+
+/* ============================================
+   ANIMATION SYSTEM
+   Performance: transform + opacity only
+   Accessibility: respects prefers-reduced-motion
+   ============================================ */
+
+/* Base state: hidden before animation triggers */
+.animate-on-scroll {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity, filter;
+  transition-duration: var(--animate-duration, 700ms);
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--animate-delay, 0ms);
+}
+
+/* Variant initial states */
+.animate-fade-up {
+  transform: translateY(40px);
+}
+.animate-fade-down {
+  transform: translateY(-40px);
+}
+.animate-fade-left {
+  transform: translateX(40px);
+}
+.animate-fade-right {
+  transform: translateX(-40px);
+}
+.animate-fade-in {
+  transform: none;
+}
+.animate-scale-in {
+  transform: scale(0.92);
+}
+.animate-blur-in {
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+
+/* Visible state: triggered by IntersectionObserver */
+.animate-on-scroll.animate-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  filter: blur(0);
+}
+
+/* Hero-specific entrance animation (plays on load) */
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero {
+  animation: hero-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--hero-delay, 0ms);
+  opacity: 0;
+}
+
+/* Navbar entrance */
+@keyframes navbar-slide-down {
+  from {
+    opacity: 0;
+    translate: -50% -20px;
+  }
+  to {
+    opacity: 1;
+    translate: -50% 0;
+  }
+}
+
+.animate-navbar {
+  animation: navbar-slide-down 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+/* Footer reveal */
+@keyframes footer-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile menu animation */
+@keyframes menu-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-mobile-menu {
+  animation: menu-slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Button press micro-interaction */
+.animate-press:active {
+  transform: scale(0.97);
+  transition: transform 100ms ease-out;
+}
+
+/* Link underline reveal */
+.animate-underline {
+  position: relative;
+}
+.animate-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-underline:hover::after {
+  width: 100%;
+}
+
+/* Floating soft animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle parallax-like depth shift on scroll */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.05); }
+}
+
+.animate-glow {
+  animation: gentle-pulse 5s ease-in-out infinite;
+}
+
+/* Reduced Motion: disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-hero,
+  .animate-navbar,
+  .animate-mobile-menu,
+  .animate-float,
+  .animate-glow {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .animate-navbar {
+    translate: -50% 0 !important;
+  }
 }
